@@ -1,0 +1,24 @@
+{
+    "name": "boolive/forms",
+    "type": "library",
+    "description": "Package with forms and fields",
+    "keywords": ["boolive","package","forms", "fields"],
+    "homepage": "http://boolive.ru",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vladimir Shestakov",
+            "email": "boolive@yandex.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "boolive/core": "dev-master",
+        "boolive/basic": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "../.."
+        }
+    }
+}
