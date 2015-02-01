@@ -1,0 +1,9 @@
+{
+    "proto": "/vendor/boolive/basic/widget",
+    "file": "field.tpl",
+    "logic": true,
+    "properties": {
+        "title": "Поле",
+        "description": "Элемент формы для строкового значения"
+    }
+}

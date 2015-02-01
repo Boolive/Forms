@@ -1,0 +1,13 @@
+{
+    "proto": "/vendor/boolive/basic/widget_autolist",
+    "file": "form_auto.tpl",
+    "logic": true,
+    "properties": {
+        "title": "Форма автоматическая",
+        "description": "Форма с автоматическим отображением полей",
+        "res": {
+            "proto": "/vendor/boolive/basic/widget_auto/res"
+        },
+        "views": null
+    }
+}
