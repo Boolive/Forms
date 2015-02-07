@@ -20,6 +20,7 @@
             echo $item;
         }
         ?>
+<!--        <input type="file" name="title">-->
         <div class="form__buttons">
             <input class="btn btn_type_primary" type="submit" name="<?=$v['controller']?>[submit]" value="Сохранить">
         </div>

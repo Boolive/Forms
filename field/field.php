@@ -22,7 +22,10 @@ class field extends widget
                 'value' => Rule::scalar()->default(''),
                 'base_uri' => Rule::string()->default('')->required(),
                 'call' => Rule::string()->default('show')->required(),
-            ])
+            ]),
+            'FILES' => Rule::arrays([
+                'value' => Rule::arrays(Rule::string()) // файл, загружаемый в объект
+            ]),
         ]);
     }
 
@@ -59,10 +62,18 @@ class field extends widget
 
     function processCheck(Request $request)
     {
-        if (isset($request['REQUEST']['value'])){
-            /** @var Entity $obj */
-            $obj = $request['REQUEST']['object'];
+        /** @var Entity $obj */
+        $obj = $request['REQUEST']['object'];
+        $check = false;
+        if (isset($request['REQUEST']['value'])) {
             $obj->value($request['REQUEST']['value']);
+            $check = true;
+        }
+        if (isset($request['FILES']['value'])){
+            $obj->file($request['FILES']['value']);
+            $check = true;
+        }
+        if ($check){
             /** @var $error Error */
             $error = null;
             if (!$obj->check()){

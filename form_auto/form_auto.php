@@ -71,7 +71,7 @@ class form_auto extends widget_autolist
                 }
                 if (!$request['REQUEST']['object']->errors()->isExist()){
                     // Выполнение действия
-                    $this->process();
+                    $this->process($request);
                     $this->_result = self::FORM_RESULT_OK;
                     if (!($redirect = $this->getCommands('redirect'))){
                         $redirect = $this->redirect->inner();
@@ -159,8 +159,9 @@ class form_auto extends widget_autolist
         return $props;
     }
 
-    function process()
+    function process(Request $request)
     {
+        Data::write($request['REQUEST']['object']);
         return true;
     }
 
