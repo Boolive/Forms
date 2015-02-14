@@ -1,0 +1,9 @@
+{
+    "proto": "/vendor/boolive/forms/field",
+    "file": "field_checkbox.tpl",
+    "logic": true,
+    "properties": {
+        "title": "Поле флажок",
+        "description": "Элемент формы для логического значения"
+    }
+}

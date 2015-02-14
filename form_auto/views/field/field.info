@@ -1,4 +1,5 @@
 {
     "proto": "/vendor/boolive/forms/field",
-    "is_link": true
+    "is_link": true,
+    "order": 1000
 }

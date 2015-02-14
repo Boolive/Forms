@@ -1,0 +1,9 @@
+{
+    "proto": "/vendor/boolive/forms/field",
+    "file": "field_ckeditor.tpl",
+    "logic": true,
+    "properties": {
+        "title": "Поле текстовое",
+        "description": "Элемент формы для большого текста"
+    }
+}
