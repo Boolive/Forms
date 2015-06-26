@@ -101,7 +101,7 @@ class form_auto extends widget_autolist
         }else{
             // Отображение формы
             $v = array();
-            if (isset($request['COOKIE']['token']) && Session::isExist('form')){
+            if (isset($request['COOKIE']['token']) && Session::is_exist('form')){
                 $form = Session::get('form');
                 if (isset($form[$this->uri().$request['COOKIE']['token']])){
                     $form = $form[$this->uri().$request['COOKIE']['token']];
