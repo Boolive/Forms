@@ -114,6 +114,7 @@ class form_auto extends widget_autolist
                     $this->_result = $form['result'];
                 }
             }
+            $this->res->start($request);
             return $this->show($v, $request);
         }
     }
@@ -133,26 +134,32 @@ class form_auto extends widget_autolist
             $v['message'] = 'Успешное сохранение';//$this->message_ok->inner()->value();
         }
         /** @var Entity $obj */
-        $obj = $request['REQUEST']['object'];
-        if ($obj->is_exists()){
-            $v['object'] = $obj->uri();
-        }else{
-            $v['object'] = array();
-            if ($p = $obj->proto()) $v['object']['proto'] = $p;
-            if ($p = $obj->parent()) $v['object']['parent'] = $p;
-            $v['object'] = F::toJSON($v['object'], false);
-        }
+//        $obj = $request['REQUEST']['object'];
+//        if ($obj->is_exists()){
+//            $v['object'] = $obj->uri();
+//        }else{
+//            $v['object'] = array();
+//            if ($p = $obj->proto()) $v['object']['proto'] = $p;
+//            if ($p = $obj->parent()) $v['object']['parent'] = $p;
+//            $v['object'] = F::toJSON($v['object'], false);
+//        }
         return parent::show($v, $request);
     }
 
     function getList(Request $request, $cond = [])
     {
-        $cond = Data::unionCond($cond, [
-            'from' => $request['REQUEST']['object'],
-            'select' => 'properties',
-            'depth' => 1
-        ]);
-        $props = Data::find($cond);
+        /** @var Entity $obj */
+        $obj = $request['REQUEST']['object'];
+        if ($obj->is_exists()) {
+            $cond = Data::unionCond($cond, [
+                'from' => $request['REQUEST']['object'],
+                'select' => 'properties',
+                'depth' => 1
+            ]);
+            $props = Data::find($cond);
+        }else{
+            $props = $obj->children();
+        }
         foreach ($props as $p){
             $request['REQUEST']['object']->__set($p->name(), $p);
         }
