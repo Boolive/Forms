@@ -12,7 +12,7 @@
     <form action="" method="POST" enctype="multipart/form-data">
         <!-- Идентификатор формы -->
         <input type="hidden" name="form" value="<?=$v['controller']?>">
-        <input type="hidden" name="object" value="<?=$v['object']?>">
+        <input type="hidden" name="object" value="<?=$v['object']->entity()->uri()?>">
         <!-- Поля -->
         <?php
         $list = $v['views']->arrays(\boolive\core\values\Rule::string());
