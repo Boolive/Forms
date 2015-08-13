@@ -1,9 +1,22 @@
 {
     "proto": "/vendor/boolive/forms/field",
+    "order": 0,
     "file": "field_ckeditor.tpl",
     "logic": true,
     "properties": {
-        "title": "Поле текстовое",
-        "description": "Элемент формы для большого текста"
+        "title": {
+            "proto": "/vendor/boolive/forms/field/title",
+            "order": 1,
+            "value": "Поле текстовое"
+        },
+        "description": {
+            "proto": "/vendor/boolive/forms/field/description",
+            "order": 2,
+            "value": "Элемент формы для большого текста"
+        },
+        "res": {
+            "proto": "/vendor/boolive/forms/field/res",
+            "order": 3
+        }
     }
 }
