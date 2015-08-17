@@ -1,7 +1,6 @@
 {
     "proto": "/vendor/boolive/basic/vendor_front",
     "order": 1,
-    "file": "trumbowyg.js",
     "properties": {
         "version": "*",
         "import": "jquery/dist/jquery.min.js; trumbowyg/dist/trumbowyg.min.js; trumbowyg/dist/ui/trumbowyg.min.css"

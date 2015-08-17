@@ -19,23 +19,33 @@ class handler extends controller
     {
         return Rule::arrays([
             'REQUEST' => Rule::arrays([
-                'form' => Rule::entity()->required()
+                'handler' => Rule::entity()->required()
             ]),
             //'previous' => Rule::not(true)
         ]);
     }
 
+    function startCheck(Request $request)
+    {
+        $input = $request->getInput();
+        if (!isset($input['REQUEST']['handler']) && isset($input['REQUEST']['form'])){
+            $request->mix(['REQUEST' => ['handler' => $input['REQUEST']['form']]]);
+        }
+        return parent::startCheck($request);
+    }
+
     function work(Request $request)
     {
-        $out = $request['REQUEST']['form']->start($request);
-        header("HTTP/1.1 303 See Other");
+        $out = $request['REQUEST']['handler']->start($request);
         if ($redirect = $request->getCommands('redirect')){
+            header("HTTP/1.1 303 See Other");
             header('Location: '.$redirect[0][0]);
         }else{
-            header('Location: '.Request::url());//текущий адрес без аргументов
-        }
-        if ($out != false){
-            echo is_array($out)? F::toJSON($out,false) : $out;
+            if ($out != false){
+                echo is_array($out)? F::toJSON($out,false) : $out;
+            }else {
+                header('Location: ' . Request::url());//текущий адрес без аргументов
+            }
         }
     }
 }
