@@ -42,7 +42,12 @@ class handler extends controller
             header('Location: '.$redirect[0][0]);
         }else{
             if ($out != false){
-                echo is_array($out)? F::toJSON($out,false) : $out;
+                if (is_array($out)){
+                    header('Content-Type: application/json');
+                    echo F::toJSON($out,false);
+                }else{
+                    echo $out;
+                }
             }else {
                 header('Location: ' . Request::url());//текущий адрес без аргументов
             }
