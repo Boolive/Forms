@@ -1,6 +1,6 @@
 <?php
 return [
     '/interfaces.startChildren' => [
-        '/vendor/boolive/forms/handler'
+        0 => '/vendor/boolive/forms/handler'
     ]
 ];
